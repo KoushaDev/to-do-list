@@ -53,3 +53,8 @@ function newElement() {
     }
   }
 }
+window.onload = function() {
+  localStorage.setItem("myUL", $('#inputList').val()); 
+}
+var myUL = localStorage.getItem('List');
+console.log(myUL); //  To print the value of localStorage variable name
