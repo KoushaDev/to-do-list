@@ -53,6 +53,14 @@ function newElement() {
     }
   }
 }
-window.setTimeout(function () {
-  window.location.reload();
-}, 30000);
+let myUL = document.querySelector("#myUL")
+
+myUL.value = localStorage.getItem("notes")
+
+let cancel
+myUL.addEventListener("keyup", event => {
+  if (cancel) clearTimeout(cancel)
+  cancel = setTimeout(() => {
+    localStorage.setItem("notes", event.target.value)
+  }, 1000)
+})
