@@ -53,30 +53,3 @@ function newElement() {
     }
   }
 }
-function CreateListItemWithDetails(myUL) {
-  var item = {
-      "__metadata": { "type": "SP.Data.myUL" },
-      "Title": "New Goals title",
-      "Goals": this.todoList // Pass your To-Do list data here in 'string' format assuming 'Goals' is multiple lines of text column
-  };
-
-  $.ajax({
-      url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('" + myUL + "')/items",
-      type: "POST",
-      contentType: "application/json;odata=verbose",
-      data: JSON.stringify(item),
-      headers: {
-          "Accept": "application/json;odata=verbose",
-          "X-RequestDigest": $("#__REQUESTDIGEST").val()
-      },
-      success: function (data) {
-          console.log(data);
-      },
-      error: function (data) {
-          console.log(data);
-      }
-  });
-}
-
-//Usage of function - Pass display name of list to function
-CreateListItemWithDetails(myUL);
